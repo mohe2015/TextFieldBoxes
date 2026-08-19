@@ -8,12 +8,14 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.TextViewCompat;
-import android.support.v7.widget.AppCompatImageButton;
-import android.support.v7.widget.AppCompatTextView;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.widget.TextViewCompat;
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.appcompat.widget.AppCompatTextView;
+
+import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -222,7 +224,7 @@ public class TextFieldBoxes extends FrameLayout {
         DEFAULT_FG_COLOR = themeArray.getColor(0, 0);
 
         /* Get Default Primary Color From Theme */
-        themeArray = theme.obtainStyledAttributes(new int[]{R.attr.colorPrimary});
+        themeArray = theme.obtainStyledAttributes(new int[]{android.R.attr.colorPrimary});
         if (isLight(DEFAULT_BG_COLOR))
             DEFAULT_PRIMARY_COLOR = lighter(themeArray.getColor(0, 0), 0.2f);
         else DEFAULT_PRIMARY_COLOR = themeArray.getColor(0, 0);
@@ -1302,7 +1304,6 @@ public class TextFieldBoxes extends FrameLayout {
      * set EditText cursor color
      */
     protected static void setCursorDrawableColor(EditText _editText, int _colorRes) {
-
         try {
             Field fCursorDrawableRes = TextView.class.getDeclaredField("mCursorDrawableRes");
             fCursorDrawableRes.setAccessible(true);
